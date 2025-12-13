@@ -36,4 +36,4 @@ Route::get('/posts', [
     PostController::class,'index'
 ]);
 
-Route::get("posts/{slug}",[PostController::class,"show"]);
+Route::get("posts/{post:slug}",[PostController::class,"show"]); // route model binding. defaultnya kalau post aja dia kirim id. makanya perlu ditambahi :slug biar dia kirim slug
