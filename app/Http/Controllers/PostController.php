@@ -10,8 +10,9 @@ class PostController extends Controller
     {
         return view('posts', [
             'title' => 'Posts',
-            'posts' => Post::all(),
-        ]);
+            // 'posts' => Post::all(), 
+            'posts' => Post::latest()->get(), // biar urutan postingannya terurut berdasarkan id
+            ]);
     }
 
     public function show(Post $post) { // route model binding

@@ -10,7 +10,7 @@
    </a>
   </h2>
   <p>
-    Created by: <b>{{ $post->user->name }}</b> 
+    Created by: <b>{{ $post->author->name }}</b> 
   </p>
     <p>{!! $post->body  !!}</p>
 </article>
