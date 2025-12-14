@@ -9,6 +9,9 @@
         {{ $post->title }}
    </a>
   </h2>
+  <p>
+    Created by: <b>{{ $post->user->name }}</b> 
+  </p>
     <p>{!! $post->body  !!}</p>
 </article>
  

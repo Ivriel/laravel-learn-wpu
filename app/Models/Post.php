@@ -16,4 +16,9 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class); // cara bacanya liat model post dulu. post hanya bisa dimilikin oleh 1 user
+    }
 }
