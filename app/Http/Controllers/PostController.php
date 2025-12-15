@@ -9,9 +9,10 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            'title' => 'Posts',
+            'title' => 'All Posts',
             // 'posts' => Post::all(), 
-            'posts' => Post::latest()->get(), // biar urutan postingannya terurut berdasarkan id
+            // pakai eager loading (with)
+            'posts' => Post::with(['author','category'])->latest()->get(), // biar urutan postingannya terurut berdasarkan id
             ]);
     }
 
