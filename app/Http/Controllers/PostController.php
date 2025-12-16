@@ -10,9 +10,10 @@ class PostController extends Controller
     {
         return view('posts', [
             'title' => 'All Posts',
+            "active" => 'posts',
             // 'posts' => Post::all(), 
             // pakai eager loading (with)
-            'posts' => Post::with(['author','category'])->latest()->get(), // biar urutan postingannya terurut berdasarkan id
+            'posts' => Post::latest()->get(), // biar urutan postingannya terurut berdasarkan id
             ]);
     }
 
@@ -20,6 +21,7 @@ class PostController extends Controller
             
     return view("post",[
         "title" =>'Single Post',
+        "active" => 'posts',
         "post" => $post
     ]);
     }

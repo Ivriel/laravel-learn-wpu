@@ -11,6 +11,7 @@ class Post extends Model
 
     // protected $fillable = ['title','excerpt','body'];// biar ga error di tinker. mass assignmet. ini boleh sisanya ga boleh
     protected $guarded = ['id'];// ini ga boleh. sisanya boleh
+    protected $with = ['category','author'];
 
     public function category()
     {
