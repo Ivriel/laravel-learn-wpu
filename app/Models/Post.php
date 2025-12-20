@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     // protected $fillable = ['title','excerpt','body'];// biar ga error di tinker. mass assignmet. ini boleh sisanya ga boleh
     protected $guarded = ['id'];// ini ga boleh. sisanya boleh
@@ -47,4 +49,14 @@ class Post extends Model
     {
         return 'slug';
     }
+
+     public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title' 
+            ]
+        ];
+    }
+
 }
