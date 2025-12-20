@@ -26,10 +26,6 @@
                     <article class="my-3 fs-5">
                 {!! $post->body !!}
                     </article>
-                <a href="/posts" class="d-block mt-3">
-                    <i data-feather="chevron-left"></i>
-                    Back to Posts
-                </a>
             </div>
         </div>
     </div>

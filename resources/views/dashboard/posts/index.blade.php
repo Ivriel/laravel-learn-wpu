@@ -5,9 +5,20 @@
         <h1 class="h2">My Posts</h1>
     </div>
 
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="table-responsive col-lg-8 small">
         <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create New Post</a>
-        <table class="table table-striped table-sm">
+      @if ($posts->count() == 0) 
+       <div class="alert alert-danger" role="alert">
+            <h4>Anda belum memiliki postingan apapun</h4>
+        </div>
+          @else
+            <table class="table table-striped table-sm">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -43,6 +54,7 @@
                 @endforeach
             </tbody>
         </table>
+      @endif
     </div>
 
 @endsection
