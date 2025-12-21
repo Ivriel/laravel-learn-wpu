@@ -6,8 +6,9 @@
     </div>
 
     @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
             {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
@@ -44,11 +45,13 @@
                                     <use xlink:href="#pencil"></use>
                                 </svg>
                             </a>
-                            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-danger" onclick="return confirm('Yakin mau dihapus?')">
-                                <svg class="bi" aria-hidden="true">
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="badge bg-danger border-0">   <svg class="bi" aria-hidden="true" onclick="return confirm('Are you sured')">
                                     <use xlink:href="#trash"></use>
-                                </svg>
-                            </a>
+                                </svg></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
