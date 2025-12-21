@@ -47,8 +47,13 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts', // kasih unique dari model posts
             'category_id' => 'required',
+            'image' => 'image|file|max:1024', // satuan kb
             'body' => 'required',
         ]); // buat nangkep data yang dikirimin.
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
