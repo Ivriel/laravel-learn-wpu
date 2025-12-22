@@ -64,6 +64,7 @@ Route::get('/dashboard',function(){
 })->middleware('auth'); // hanya bisa diakses yang udah login
 
 Route::get('/dashboard/posts/checkSlug',[DashboardPostController::class,'checkSlug'])->middleware('auth');
+Route::get('/dashboard/categories/checkSlug',[AdminCategoryController::class,'checkSlug'])->middleware('auth');
 
 Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
 

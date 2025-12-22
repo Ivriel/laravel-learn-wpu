@@ -33,11 +33,6 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
-                            <a href="/dashboard/categories/{{ $category->slug }}" class="badge bg-info">
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#eye"></use>
-                                </svg>
-                            </a>
                             <a href="/dashboard/categories/{{ $category->slug }}/edit" class="badge bg-warning">
                                 <svg class="bi" aria-hidden="true">
                                     <use xlink:href="#pencil"></use>
@@ -57,5 +52,18 @@
         </table>
       @endif
     </div>
+
+    <script>
+        // Prevent alert from showing when navigating back from browser cache
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+                // Page was loaded from cache (back/forward button)
+                var alert = document.querySelector('.alert-success');
+                if (alert) {
+                    alert.remove();
+                }
+            }
+        });
+    </script>
 
 @endsection
